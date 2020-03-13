@@ -12,7 +12,7 @@ public class MainWindow extends JFrame {
     private static final int WINDOW_WIDTH = 1100;
     private static final int WINDOW_POSITION_X = 220;
     private static final int WINDOW_POSITION_Y = 100;
-    public static String title = "Title";
+    public static String title = "Charts";
     public static JPanel table;
 
     public static DiagramPanel diagramPanel = new DiagramPanel(false,false,false,false,false,false);
