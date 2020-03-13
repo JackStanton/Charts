@@ -2,10 +2,9 @@ package application.GUI;
 
 import application.GUI.panels.DiagramPanel;
 import application.GUI.panels.NavigatePanel;
-import application.classes.Table;
+import application.GUI.panels.Table;
 
 import javax.swing.*;
-import javax.swing.table.JTableHeader;
 import java.awt.*;
 
 public class MainWindow extends JFrame {

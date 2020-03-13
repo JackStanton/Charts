@@ -1,6 +1,7 @@
-package application.classes;
+package application.GUI.panels;
 
 
+import application.classes.Record;
 import com.google.protobuf.StringValue;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

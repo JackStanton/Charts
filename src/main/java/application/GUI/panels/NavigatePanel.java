@@ -1,8 +1,6 @@
 package application.GUI.panels;
 
 import application.GUI.MainWindow;
-import application.Starter;
-import application.classes.Table;
 
 import javax.swing.*;
 import java.awt.*;
