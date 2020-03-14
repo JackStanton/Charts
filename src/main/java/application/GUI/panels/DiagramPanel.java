@@ -15,4 +15,10 @@ public class DiagramPanel extends JPanel {
         ChartPanel panel = new ChartPanel(chart);
         add(panel);
     }
+    public DiagramPanel(int rating, int equ) {
+        JFreeChart chart = ChartUtil.getEqu(rating,equ);
+        chart.setPadding(new RectangleInsets(4, 8, 2, 2));
+        ChartPanel panel = new ChartPanel(chart);
+        add(panel);
+    }
 }

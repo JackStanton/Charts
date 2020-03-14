@@ -103,12 +103,7 @@ public class ChartUtil{
         }
 
 
-        XYSeries series7 = new XYSeries("Не отличный");
-        for (int x = 0; x < 101; x++) {
-            float  y = (float) (1.0 - ((x-40)*(x-40)/3));
-            if (y > 1) y = 1; if (y < 0) y = 0;
-            series6.add(x, 1);
-        }
+
 
 
 
@@ -122,7 +117,7 @@ public class ChartUtil{
 
         XYSeriesCollection xyDataset = new XYSeriesCollection();
         xyDataset.addSeries(series0);
-        xyDataset.addSeries(series7);
+
         if(series1b){
             xyDataset.addSeries(series1);
         }
@@ -154,6 +149,40 @@ public class ChartUtil{
         setSeriesColorAndWidth(chart,2,Color.blue, new BasicStroke( 2f ));
         setSeriesColorAndWidth(chart,3,Color.magenta, new BasicStroke( 2f ));
         return chart;
+    }
+
+
+    public static JFreeChart getEqu(int rating, int equ){
+
+        XYSeries series0 = new XYSeries("Линия принадлежности");
+
+        for(float i = 0; i < 100; i+=0.1){
+            series0.add(i, 0.8);
+        }
+
+        XYSeries series7 = new XYSeries("Выборка");
+        for (float x = 0; x < 101; x+=0.1) {
+            double  y = (1.0 - ((x-rating)*(x-rating)/equ));
+            if (y > 1) y = 1; if (y < 0) y = 0;
+            series7.add(x, y);
+        }
+        XYSeriesCollection xyDataset = new XYSeriesCollection();
+        xyDataset.addSeries(series0);
+        xyDataset.addSeries(series7);
+
+        JFreeChart chart = ChartFactory
+                .createXYLineChart("График", "x", "y",
+                        xyDataset,
+                        PlotOrientation.VERTICAL,
+                        true, true, true);
+        chart.setBackgroundPaint(Color.lightGray);
+
+        setSeriesColorAndWidth(chart,0,Color.gray, new BasicStroke( 2f ));
+        setSeriesColorAndWidth(chart,1,Color.red, new BasicStroke( 2f ));
+
+        return chart;
+
+
     }
 
     private static void setSeriesColorAndWidth(JFreeChart chart, int seriesIndex, Color color,BasicStroke basicStroke) {

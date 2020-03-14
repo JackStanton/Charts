@@ -1,6 +1,7 @@
 package application.GUI.panels;
 
 import application.GUI.MainWindow;
+import application.classes.ChartUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,6 +40,7 @@ public class NavigatePanel extends JPanel {
         final JButton buttonNot3 = new JButton("Не отличные");
         final JButton buttonReset = new JButton("Сбросить");
 
+
         button1.setEnabled(false);
         button2.setEnabled(false);
         button3.setEnabled(false);
@@ -68,6 +70,7 @@ public class NavigatePanel extends JPanel {
         buttonPanel.add(buttonReset);
 
 
+
         mainPanel.add(radioPanel);
         mainPanel.add(buttonPanel);
         add(mainPanel);
@@ -85,6 +88,7 @@ public class NavigatePanel extends JPanel {
                 buttonNot1.setEnabled(true);
                 buttonNot2.setEnabled(true);
                 buttonNot3.setEnabled(true);
+
             }
         });
 
@@ -230,6 +234,7 @@ public class NavigatePanel extends JPanel {
                 buttonReset.setEnabled(false);
             }
         });
+
     }
 
 

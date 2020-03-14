@@ -1,8 +1,10 @@
 package application.GUI;
 
 import application.GUI.panels.DiagramPanel;
+import application.GUI.panels.EquPanel;
 import application.GUI.panels.NavigatePanel;
 import application.GUI.panels.Table;
+import org.hibernate.metamodel.model.convert.spi.JpaAttributeConverter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,8 +17,9 @@ public class MainWindow extends JFrame {
     public static String title = "Charts";
     public static JPanel table;
 
+
     public static DiagramPanel diagramPanel = new DiagramPanel(false,false,false,false,false,false);
-    public static JPanel panel = new JPanel(new GridLayout(5,1));
+    public static JPanel panel = new JPanel(new GridLayout(2,1));
     static public JScrollPane scrollPane;
 
     public MainWindow() throws HeadlessException {
@@ -30,14 +33,20 @@ public class MainWindow extends JFrame {
         panel.add(diagramPanel, BorderLayout.NORTH);
 
         table = new Table("from Record where rating = '-1'");
+        EquPanel equPanel = new EquPanel();
 
         panel.add(table);
+
 
         scrollPane = new JScrollPane(panel);
         scrollPane.getVerticalScrollBar().setValue(1);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         add(scrollPane);
-        add(navigatePanel, BorderLayout.SOUTH);
+        JPanel p = new JPanel(new GridLayout(2,1));
+        p.add(equPanel,BorderLayout.SOUTH);
+        p.add(navigatePanel, BorderLayout.SOUTH);
+        add(p, BorderLayout.SOUTH);
+
         setVisible(true);
     }
 }
