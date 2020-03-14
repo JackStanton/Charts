@@ -38,11 +38,6 @@ public class MainWindow extends JFrame {
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         add(scrollPane);
         add(navigatePanel, BorderLayout.SOUTH);
-
-
-
-
-
         setVisible(true);
     }
 }

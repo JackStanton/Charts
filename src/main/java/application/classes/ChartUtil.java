@@ -102,6 +102,17 @@ public class ChartUtil{
             }
         }
 
+
+        XYSeries series7 = new XYSeries("Не отличный");
+        for (int x = 0; x < 101; x++) {
+            float  y = (float) (1.0 - ((x-40)*(x-40)/3));
+            if (y > 1) y = 1; if (y < 0) y = 0;
+            series6.add(x, 1);
+        }
+
+
+
+
         XYSeries series0 = new XYSeries("Линия принадлежности");
 
         for(float i = 0; i < 100; i+=0.1){
@@ -111,6 +122,7 @@ public class ChartUtil{
 
         XYSeriesCollection xyDataset = new XYSeriesCollection();
         xyDataset.addSeries(series0);
+        xyDataset.addSeries(series7);
         if(series1b){
             xyDataset.addSeries(series1);
         }
