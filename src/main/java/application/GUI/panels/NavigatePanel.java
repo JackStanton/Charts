@@ -23,12 +23,12 @@ public class NavigatePanel extends JPanel {
     boolean series6b = false;
 
     public NavigatePanel() {
-        JRadioButton buttonAnd = new JRadioButton("И");
-        JRadioButton buttonOr = new JRadioButton("Или");
+        JButton buttonAnd = new JButton("И");
+        JButton buttonOr = new JButton("Или");
 
 
-        buttonList.add(buttonAnd);
-        buttonList.add(buttonOr);
+//        buttonList.add(buttonAnd);
+//        buttonList.add(buttonOr);
 
 
         final JButton buttonAll = new JButton("Показать все");
@@ -81,7 +81,12 @@ public class NavigatePanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 query = new StringBuilder("from Record WHERE ");
                 flag = 1;
-                getOperator(group.getSelection());
+                operator = "AND";
+//                getOperator(group.getSelection());
+
+                buttonAnd.setEnabled(false);
+                buttonOr.setEnabled(true);
+
                 button1.setEnabled(true);
                 button2.setEnabled(true);
                 button3.setEnabled(true);
@@ -96,7 +101,12 @@ public class NavigatePanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 query = new StringBuilder("from Record WHERE ");
                 flag = 1;
-                getOperator(group.getSelection());
+//                getOperator(group.getSelection());
+                operator = "OR";
+
+                buttonAnd.setEnabled(true);
+                buttonOr.setEnabled(false);
+
                 button1.setEnabled(true);
                 button2.setEnabled(true);
                 button3.setEnabled(true);
@@ -112,6 +122,16 @@ public class NavigatePanel extends JPanel {
                 System.out.println(query);
                 query = new StringBuilder();
 
+                buttonAnd.setEnabled(true);
+                buttonOr.setEnabled(true);
+
+                button1.setEnabled(false);
+                button2.setEnabled(false);
+                button3.setEnabled(false);
+                buttonNot1.setEnabled(false);
+                buttonNot2.setEnabled(false);
+                buttonNot3.setEnabled(false);
+
                 MainWindow.panel.remove(MainWindow.diagramPanel);
                 MainWindow.diagramPanel = new DiagramPanel(true,true,true,true,true,true);
                 MainWindow.panel.add(MainWindow.diagramPanel, BorderLayout.NORTH);
@@ -123,7 +143,7 @@ public class NavigatePanel extends JPanel {
         });
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String condition = " (rating between 0 and 30) ";
+                String condition = " (rating between 0 and 37) ";
 
                 button1.setEnabled(false);
                 MainWindow.panel.remove(MainWindow.diagramPanel);
@@ -137,7 +157,7 @@ public class NavigatePanel extends JPanel {
         });
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String condition = " (rating between 40 and 70) ";
+                String condition = " (rating between 34 and 74) ";
 
                 button2.setEnabled(false);
                 MainWindow.panel.remove(MainWindow.diagramPanel);
@@ -151,7 +171,7 @@ public class NavigatePanel extends JPanel {
         });
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String condition = " (rating between 80 and 100) ";
+                String condition = " (rating between 72 and 100) ";
 
                 button3.setEnabled(false);
                 MainWindow.panel.remove(MainWindow.diagramPanel);
@@ -165,7 +185,7 @@ public class NavigatePanel extends JPanel {
         });
         buttonNot1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String condition = " (rating between 31 and 100) ";
+                String condition = " (rating between 62 and 100) ";
 
                 buttonNot1.setEnabled(false);
                 buttonReset.setEnabled(true);
@@ -180,7 +200,7 @@ public class NavigatePanel extends JPanel {
         });
         buttonNot2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String condition = " ((rating between 0 and 39)OR(rating between 71 and 100)) ";
+                String condition = " ((rating between 0 and 15)OR(rating between 86 and 100)) ";
 
                 buttonNot2.setEnabled(false);
                 buttonReset.setEnabled(true);
@@ -195,7 +215,7 @@ public class NavigatePanel extends JPanel {
         });
         buttonNot3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String condition = " (rating between 0 and 79) ";
+                String condition = " (rating between 0 and 48) ";
 
                 buttonNot3.setEnabled(false);
                 buttonReset.setEnabled(true);
@@ -218,12 +238,16 @@ public class NavigatePanel extends JPanel {
                 series4b = false;
                 series5b = false;
                 series6b = false;
-                button1.setEnabled(true);
-                button2.setEnabled(true);
-                button3.setEnabled(true);
-                buttonNot1.setEnabled(true);
-                buttonNot2.setEnabled(true);
-                buttonNot3.setEnabled(true);
+
+                buttonAnd.setEnabled(true);
+                buttonOr.setEnabled(true);
+
+                button1.setEnabled(false);
+                button2.setEnabled(false);
+                button3.setEnabled(false);
+                buttonNot1.setEnabled(false);
+                buttonNot2.setEnabled(false);
+                buttonNot3.setEnabled(false);
                 MainWindow.panel.remove(MainWindow.diagramPanel);
                 MainWindow.diagramPanel = new DiagramPanel(series1b,series2b,series3b,series4b,series5b,series6b);
                 MainWindow.panel.add(MainWindow.diagramPanel, BorderLayout.NORTH);
