@@ -42,7 +42,7 @@ public class Table extends JPanel {
         }
 
 
-                String column[]={"ID","FilmName","Prod","Company","Year","Rating"};
+                String[] column ={"ID","FilmName","Prod","Company","Year","Rating"};
                 final JTable jt=new JTable(data,column);
                 jt.setCellSelectionEnabled(true);
                 ListSelectionModel select= jt.getSelectionModel();

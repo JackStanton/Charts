@@ -136,7 +136,7 @@ public class NavigatePanel extends JPanel {
                 MainWindow.diagramPanel = new DiagramPanel(true,true,true,true,true,true);
                 MainWindow.panel.add(MainWindow.diagramPanel, BorderLayout.NORTH);
                 MainWindow.panel.remove(MainWindow.table);
-                MainWindow.table = new Table(String.valueOf("from Record"));
+                MainWindow.table = new Table("from Record");
                 MainWindow.panel.add(MainWindow.table);
                 MainWindow.panel.updateUI();
             }

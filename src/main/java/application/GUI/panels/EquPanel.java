@@ -17,10 +17,9 @@ public class EquPanel extends JPanel {
         JComboBox comboBox = new JComboBox(ratingArr);
 
 
-        String[] equArr = new String[6];
-        equArr[0] = ""+1;
-        for (int i = 0; i < equArr.length-1; i++) {
-            equArr[i+1] = ""+((i+1)*10);
+        String[] equArr = new String[5];
+        for (int i = 0; i < equArr.length; i++) {
+            equArr[i] = ""+(i+1);
         }
         JComboBox equComboBox = new JComboBox(equArr);
 
@@ -41,7 +40,28 @@ public class EquPanel extends JPanel {
                 MainWindow.diagramPanel = new DiagramPanel(rating,equ);
                 MainWindow.panel.add(MainWindow.diagramPanel, BorderLayout.NORTH);
                 MainWindow.panel.remove(MainWindow.table);
-                MainWindow.table = new Table("from Record where rating between "+(rating-(equ/10))+" AND "+(rating+(equ/10)));
+                boolean minResNotExist = true;
+                boolean maxResNotExist = false;
+                double min = 0;
+                double max = 100;
+                for (float x = 0; x < 101; x += 0.1) {
+                    double y = (1.0 - ((x - rating) * (x - rating) / (equ * equ)));
+                    if (minResNotExist) {
+                        if (y > 0.8) {
+                            min = x;
+                            minResNotExist = false;
+                            maxResNotExist = true;
+                        }
+
+                    }
+                    if (maxResNotExist) {
+                        if (y < 0.8) {
+                            max = x;
+                            maxResNotExist = false;
+                        }
+                    }
+                }
+                MainWindow.table = new Table("from Record where rating between " + min + " AND " + max);
                 MainWindow.panel.add(MainWindow.table);
                 MainWindow.panel.updateUI();
             }

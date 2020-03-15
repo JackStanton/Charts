@@ -162,7 +162,7 @@ public class ChartUtil{
 
         XYSeries series7 = new XYSeries("Выборка");
         for (float x = 0; x < 101; x+=0.1) {
-            double  y = (1.0 - ((x-rating)*(x-rating)/equ));
+            double y = (1.0 - ((x - rating) * (x - rating) / (equ * equ)));
             if (y > 1) y = 1; if (y < 0) y = 0;
             series7.add(x, y);
         }
